@@ -30,7 +30,8 @@ async function getCurrentPower() {
   let power;
 
   try {
-    const request = new Request(url, {signal: AbortSignal.timeout(3000)});
+    const request = new Request(url);
+    request.timeoutInterval = 5;
     const response = await request.loadJSON();
     power = response.data?.p1 + response.data?.p2;
   } catch (error) {

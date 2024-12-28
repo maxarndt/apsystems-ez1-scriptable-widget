@@ -31,6 +31,7 @@ async function getCurrentPower() {
 
   try {
     const request = new Request(url);
+    request.timeoutInterval = 5;
     const response = await request.loadJSON();
     power = response.data?.p1 + response.data?.p2;
   } catch (error) {

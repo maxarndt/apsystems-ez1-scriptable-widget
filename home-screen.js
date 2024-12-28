@@ -1,3 +1,6 @@
+// Variables used by Scriptable.
+// These must be at the very top of the file. Do not edit.
+// icon-color: green; icon-glyph: magic;
 // URL of the getOutputData endpoint of APsystems EZ1-M local API
 const url = "http://192.168.178.58:8050/getOutputData";
 // max. configured output power of APsystems EZ1-M
@@ -43,6 +46,7 @@ async function getCurrentPower() {
 
   try {
     const request = new Request(url);
+    request.timeoutInterval = 5;
     const response = await request.loadJSON();
     power = response.data?.p1 + response.data?.p2;
   } catch (error) {
